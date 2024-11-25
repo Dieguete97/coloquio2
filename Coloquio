@@ -1,0 +1,38 @@
+f1 = open("F1_2024.txt", "r")
+
+puntos = [25,18, 15, 12, 10, 8, 6, 4, 2, 1]
+posiciones = [1,2,3,4,5,6,7,8,9,10]
+
+def listado_pilotos():
+    f1.seek(0)
+    print("""Listado de pilotos
+          
+          """)
+    for linea in f1.readlines():
+        piloto = linea[0:12].strip()
+        puntos = linea[45:].strip()
+
+while True:
+    print("""MENU
+        1. Listado con el total de puntos de cada piloto, ordenado de mayor a menor puntaje.
+        2. Listado de puntos de cada equipo, ordenado de mayor a menor puntaje.
+        3. Promedio de puntos de cada piloto
+        4. Mejor posición obtenida por cada piloto en orden alfabético.
+        0. Salir
+""")
+    op = int(input("Ingrese la opción: "))
+    if op == 0:
+        break
+    elif op == 1:
+        listado_pilotos()
+    elif op == 2:
+        pass
+    elif op == 3:
+        pass
+    elif op == 4:
+        pass
+    else:
+        print("Opción no válida")
+
+
+f1.close()
