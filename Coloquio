@@ -1,16 +1,28 @@
 f1 = open("F1_2024.txt", "r")
 
+
 puntos = [25,18, 15, 12, 10, 8, 6, 4, 2, 1]
 posiciones = [1,2,3,4,5,6,7,8,9,10]
 
-def listado_pilotos():
-    f1.seek(0)
-    print("""Listado de pilotos
-          
-          """)
-    for linea in f1.readlines():
-        piloto = linea[0:12].strip()
-        puntos = linea[45:].strip()
+
+
+def calcular_puntos_piloto():
+    linea = f1.readline()
+    piloto = linea[0:12].strip()   
+    posicion = linea[40:].strip().split()  # `posicion` será una lista de strings
+    
+    suma_total = 0
+    for pos in posicion:  # Iterar directamente sobre los elementos de la lista
+        pos_int = int(pos)  # Convertir la posición a entero
+        if 1 <= pos_int <= 10:  # Validar que está entre 1 y 10
+            suma_total += puntos[posiciones.index(pos_int)]  # Usar la posición para sumar los puntos
+
+    print(piloto, suma_total)
+
+        #calcular_promedio_piloto(piloto, suma_total)
+
+
+
 
 while True:
     print("""MENU
@@ -24,7 +36,7 @@ while True:
     if op == 0:
         break
     elif op == 1:
-        listado_pilotos()
+        calcular_puntos_piloto()
     elif op == 2:
         pass
     elif op == 3:
