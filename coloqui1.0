@@ -1,0 +1,57 @@
+f1 = open("F1_2024.txt", "r")
+
+
+def calcular_puntos_piloto():
+    puntos = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]  # Puntos para las posiciones 1 a 10
+    
+    # Abrir archivo en modo lectura
+
+    for linea in f1:  # Iterar sobre cada línea del archivo
+        partes = linea.strip().split()  # Dividir la línea en partes por espacios
+            
+        piloto = partes[0]  # Suponiendo que el nombre del piloto es la primera parte
+        posiciones = partes[1:]  # Las posiciones siguen al nombre del piloto
+            
+        suma_total = 0
+        for pos in posiciones:
+            try:
+                pos_int = int(pos)  # Convertir posición a entero
+                if 1 <= pos_int <= 10:  # Verificar que está entre 1 y 10
+                    suma_total += puntos[pos_int - 1]  # Sumar puntos correspondientes
+            except ValueError:
+                # Si la posición no es un número, continuar con la siguiente
+                continue
+            
+        print(f"{piloto}: {suma_total} puntos")  # Imprimir resultados
+
+
+
+
+
+
+
+
+while True:
+    print("""MENU
+        1. Listado con el total de puntos de cada piloto, ordenado de mayor a menor puntaje.
+        2. Listado de puntos de cada equipo, ordenado de mayor a menor puntaje.
+        3. Promedio de puntos de cada piloto
+        4. Mejor posición obtenida por cada piloto en orden alfabético.
+        0. Salir
+""")
+    op = int(input("Ingrese la opción: "))
+    if op == 0:
+        break
+    elif op == 1:
+        calcular_puntos_piloto()
+    elif op == 2:
+        pass
+    elif op == 3:
+        pass
+    elif op == 4:
+        pass
+    else:
+        print("Opción no válida")
+
+
+f1.close()
